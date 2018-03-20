@@ -1,0 +1,7 @@
+version: '3.5'
+services:
+  test:
+    build: .
+    command: ssh -T git@github.com
+    volumes:
+      - ~/.ssh:/root/.ssh
