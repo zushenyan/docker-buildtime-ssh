@@ -1,5 +1,4 @@
 FROM node:latest as build
-
 ARG SSH_PRIVATE_KEY
 RUN mkdir /root/.ssh && \
   chmod 700 /root/.ssh && \
@@ -10,4 +9,6 @@ RUN mkdir /root/.ssh && \
 RUN ssh -T git@github.com || true
 
 FROM node:latest
+WORKDIR /usr/app
+COPY --from=build . .
 CMD echo "done!"
