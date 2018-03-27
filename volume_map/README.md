@@ -1,10 +1,10 @@
 # Volume Mapping 
 
-This is probably the easiest solution. Just mapping the `~/.ssh` folder from host to folder `/root/.ssh` in container.
+This is probably the easiest solution. Just mapping the `~/.ssh` in host to `/root/.ssh` in container.
 
 ### Pros
 - Easy and dummy friendly.
 - SSH key won't be saved in image or cached layers.
 
 ### Cons
-- You will have to delay the build time during container execution time, which means bundled files or modules won't be saved as cached layer for reuse in future when building again.
+- If your packages involves SSH, like `npm install` pulling from private repository, those packages wil have to be delayed to container execution time. The packages can't be cached as an layer.

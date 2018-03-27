@@ -2,3 +2,12 @@ version: '3.5'
 services:
   test:
     build: .
+    command: node index.js
+    depends_on:
+      - vault
+  vault:
+    image: dockito/vault
+    ports:
+      - "14242:3000"
+    volumes:
+      - ~/.ssh:/vault/.ssh

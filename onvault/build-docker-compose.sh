@@ -1,5 +1,6 @@
 # bin/sh
 
 docker rm -f vault; \
-docker run --name vault -d -p 14242:3000 -v ~/.ssh:/vault/.ssh dockito/vault && \
-docker-compose build --no-cache
+docker-compose down; \
+docker-compose run -d vault && \
+docker-compose run --rm test
